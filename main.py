@@ -1,3 +1,5 @@
+#!/ /usr/bin/python3
+
 import json
 import os
 import sys
@@ -30,7 +32,7 @@ def main(action, data, extra_args):
         minecraft_version = DUM_MASA_NAMING_MAP.get(minecraft_version, minecraft_version)
 
     elif action == 'modpackage':  # download to a folder or zipfile
-        minecraft_version = data
+        minecraft_version = DUM_MASA_NAMING_MAP.get(data, data)
         download_target = f'mods-{minecraft_version}'
         if '-a' in extra_args:  # make a zipfile of mods
             download_target = f'{download_target}.zip'
@@ -78,6 +80,7 @@ def get_all_versions():
             start = True
         elif start:
             if 'snapshot' in line:
+                print(line)
                 continue
             if '<option' in line:
                 yield line.split('>')[1].split('<')[0]
@@ -89,6 +92,7 @@ if __name__ == '__main__':
     if sys.argv[1] == 'generate-all-archives':
         for version in get_all_versions():
             print(version)
+            continue
             main('modpackage', version, ['-a'])
             with open(INDEX_LOCATION, 'r') as download_page:
                 current_page_data = download_page.read()
