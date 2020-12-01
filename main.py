@@ -15,7 +15,7 @@ MODS_FOLDER = '.minecraft/mods'
 
 DUM_MASA_NAMING_MAP = {
     '20w10a': '1.16-snapshot-20w10a',
-    '20w46a': '1.17-snapshot-20w46a',
+    '20w45a': '1.17-snapshot-20w45a',
     '20w48a': '1.17-snapshot-20w48a'
 }
 
